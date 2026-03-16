@@ -232,15 +232,25 @@ async function exportToPdf(element: HTMLElement, filename: string) {
     Math.max(element.scrollWidth, element.offsetWidth) +
     "px;";
   const clone = element.cloneNode(true) as HTMLElement;
-  clone.style.maxHeight = "none";
-  clone.style.overflow = "visible";
+
+  // デイモード（ライトテーマ）を強制適用
+  clone.classList.add("day");
+  clone.style.backgroundColor = "#f1f5f9";
+  clone.style.color = "#0f172a";
+
+  // ルート・全子孫のスクロール制限を解除して全内容を表示
+  [clone, ...Array.from(clone.querySelectorAll<HTMLElement>("*"))].forEach((el) => {
+    el.style.maxHeight = "none";
+    el.style.overflow = "visible";
+  });
+
   wrap.appendChild(clone);
   document.body.appendChild(wrap);
 
   try {
     const canvas = await html2canvas(clone, {
       scale: 2,
-      backgroundColor: "#1e293b",
+      backgroundColor: "#f1f5f9",
       useCORS: true,
       logging: false,
     });
