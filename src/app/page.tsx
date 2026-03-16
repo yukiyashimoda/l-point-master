@@ -1150,20 +1150,20 @@ export default function Home() {
                         <span className="text-[11px] text-slate-300 sm:text-xs">紹介（キャスト採用）200P/人</span>
                         <CounterInput value={shokaiCastCount} onChange={setShokaiCastCount} />
                       </div>
-                      <div className="flex gap-2">
+                      <div className="flex flex-col gap-1.5 sm:flex-row sm:gap-2">
                         <input
                           type="text"
                           value={shokaiCastStore}
                           onChange={(e) => setShokaiCastStore(e.target.value)}
                           placeholder="店舗名"
-                          className="h-8 flex-1 rounded-lg border border-slate-700 bg-slate-900 px-2 text-xs text-slate-50 outline-none focus:border-blue-500 placeholder:text-slate-500"
+                          className="h-8 w-full rounded-lg border border-slate-700 bg-slate-900 px-2 text-xs text-slate-50 outline-none focus:border-blue-500 placeholder:text-slate-500"
                         />
                         <input
                           type="text"
                           value={shokaiCastName}
                           onChange={(e) => setShokaiCastName(e.target.value)}
                           placeholder="名前"
-                          className="h-8 flex-1 rounded-lg border border-slate-700 bg-slate-900 px-2 text-xs text-slate-50 outline-none focus:border-blue-500 placeholder:text-slate-500"
+                          className="h-8 w-full rounded-lg border border-slate-700 bg-slate-900 px-2 text-xs text-slate-50 outline-none focus:border-blue-500 placeholder:text-slate-500"
                         />
                       </div>
                     </div>
@@ -1173,20 +1173,20 @@ export default function Home() {
                         <span className="text-[11px] text-slate-300 sm:text-xs">紹介（スタッフ採用）200P/人</span>
                         <CounterInput value={shokaiStaffCount} onChange={setShokaiStaffCount} />
                       </div>
-                      <div className="flex gap-2">
+                      <div className="flex flex-col gap-1.5 sm:flex-row sm:gap-2">
                         <input
                           type="text"
                           value={shokaiStaffStore}
                           onChange={(e) => setShokaiStaffStore(e.target.value)}
                           placeholder="店舗名"
-                          className="h-8 flex-1 rounded-lg border border-slate-700 bg-slate-900 px-2 text-xs text-slate-50 outline-none focus:border-blue-500 placeholder:text-slate-500"
+                          className="h-8 w-full rounded-lg border border-slate-700 bg-slate-900 px-2 text-xs text-slate-50 outline-none focus:border-blue-500 placeholder:text-slate-500"
                         />
                         <input
                           type="text"
                           value={shokaiStaffName}
                           onChange={(e) => setShokaiStaffName(e.target.value)}
                           placeholder="名前"
-                          className="h-8 flex-1 rounded-lg border border-slate-700 bg-slate-900 px-2 text-xs text-slate-50 outline-none focus:border-blue-500 placeholder:text-slate-500"
+                          className="h-8 w-full rounded-lg border border-slate-700 bg-slate-900 px-2 text-xs text-slate-50 outline-none focus:border-blue-500 placeholder:text-slate-500"
                         />
                       </div>
                     </div>
@@ -1196,20 +1196,20 @@ export default function Home() {
                         <span className="text-[11px] text-slate-300 sm:text-xs">1日体験 20P/人</span>
                         <CounterInput value={shokaiTaikenCount} onChange={setShokaiTaikenCount} />
                       </div>
-                      <div className="flex gap-2">
+                      <div className="flex flex-col gap-1.5 sm:flex-row sm:gap-2">
                         <input
                           type="text"
                           value={shokaiTaikenStore}
                           onChange={(e) => setShokaiTaikenStore(e.target.value)}
                           placeholder="店舗名"
-                          className="h-8 flex-1 rounded-lg border border-slate-700 bg-slate-900 px-2 text-xs text-slate-50 outline-none focus:border-blue-500 placeholder:text-slate-500"
+                          className="h-8 w-full rounded-lg border border-slate-700 bg-slate-900 px-2 text-xs text-slate-50 outline-none focus:border-blue-500 placeholder:text-slate-500"
                         />
                         <input
                           type="text"
                           value={shokaiTaikenName}
                           onChange={(e) => setShokaiTaikenName(e.target.value)}
                           placeholder="名前"
-                          className="h-8 flex-1 rounded-lg border border-slate-700 bg-slate-900 px-2 text-xs text-slate-50 outline-none focus:border-blue-500 placeholder:text-slate-500"
+                          className="h-8 w-full rounded-lg border border-slate-700 bg-slate-900 px-2 text-xs text-slate-50 outline-none focus:border-blue-500 placeholder:text-slate-500"
                         />
                       </div>
                     </div>
