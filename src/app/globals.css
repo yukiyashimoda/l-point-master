@@ -1,26 +1,69 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ============================================================
+   デイモード（.day クラスで全 slate 系を上書き）
+   ============================================================ */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ルート要素自身（bg-slate-950 text-slate-50 が同じ要素に付く場合） */
+.day { background-color: #f1f5f9; color: #0f172a; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* 背景 */
+.day .bg-slate-950          { background-color: #f1f5f9; }
+.day .bg-slate-900          { background-color: #ffffff; }
+.day .bg-slate-800          { background-color: #f1f5f9; }
+.day .bg-slate-700          { background-color: #e2e8f0; }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* 背景 + opacity 複合 */
+.day .bg-slate-900\/70      { background-color: rgba(255,255,255,0.85); }
+.day .bg-slate-900\/80      { background-color: rgba(255,255,255,0.9); }
+.day .bg-slate-900\/95      { background-color: rgba(255,255,255,0.97); }
+.day .bg-slate-800\/80      { background-color: rgba(241,245,249,0.9); }
+.day .bg-slate-800\/60      { background-color: rgba(241,245,249,0.8); }
+.day .bg-slate-950\/70      { background-color: rgba(248,250,252,0.9); }
+.day .bg-slate-950\/60      { background-color: rgba(248,250,252,0.8); }
+
+/* テキスト */
+.day .text-slate-50         { color: #0f172a; }
+.day .text-slate-100        { color: #1e293b; }
+.day .text-slate-200        { color: #334155; }
+.day .text-slate-300        { color: #475569; }
+.day .text-slate-400        { color: #64748b; }
+.day .text-slate-500        { color: #94a3b8; }
+
+/* ボーダー */
+.day .border-slate-700      { border-color: #cbd5e1; }
+.day .border-slate-800      { border-color: #e2e8f0; }
+.day .border-slate-600      { border-color: #94a3b8; }
+
+/* リング */
+.day .ring-slate-700        { --tw-ring-color: #cbd5e1; }
+.day .ring-slate-400\/40    { --tw-ring-color: rgba(148,163,184,0.4); }
+.day .ring-slate-400\/20    { --tw-ring-color: rgba(148,163,184,0.2); }
+
+/* ホバー */
+.day .hover\:bg-slate-800:hover  { background-color: #e2e8f0; }
+.day .hover\:bg-slate-700:hover  { background-color: #cbd5e1; }
+.day .hover\:text-white:hover    { color: #0f172a; }
+.day .hover\:text-slate-200:hover { color: #334155; }
+
+/* サイドバー border-r */
+.day .border-r             { border-right-color: #e2e8f0; }
+
+/* セレクト・インプット */
+.day select,
+.day input[type="date"],
+.day input[type="number"],
+.day input[type="text"],
+.day input[type="password"] {
+  background-color: #ffffff;
+  color: #0f172a;
+  border-color: #cbd5e1;
 }
+.day select option { background-color: #ffffff; color: #0f172a; }
+
+/* スクロールバー（ライト化） */
+.day ::-webkit-scrollbar-track { background: #f1f5f9; }
+.day ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+.day ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
