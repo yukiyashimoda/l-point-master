@@ -808,7 +808,7 @@ export default function Home() {
 
       {/* キャスト一覧サイドバー */}
       <aside
-        className={`fixed left-0 top-0 z-30 flex h-screen w-52 flex-shrink-0 flex-col border-r border-slate-800 bg-slate-900 transition-transform duration-200 sm:translate-x-0 ${
+        className={`fixed left-0 top-0 z-30 flex h-dvh w-52 flex-shrink-0 flex-col overflow-hidden border-r border-slate-800 bg-slate-900 transition-transform duration-200 sm:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -823,7 +823,7 @@ export default function Home() {
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto py-1">
+        <div className="min-h-0 flex-1 overflow-y-auto py-1">
           {staffList.map((s) => (
             <div key={s.id} className="group flex items-center">
               {editingCastId === s.id ? (

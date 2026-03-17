@@ -63,6 +63,10 @@
 }
 .day select option { background-color: #ffffff; color: #0f172a; }
 
+/* ポイント表示（水色 → 濃いグレー太字） */
+.day .text-blue-300          { color: #374151; font-weight: 700; }
+.day .text-blue-200          { color: #374151; font-weight: 700; }
+
 /* スクロールバー（ライト化） */
 .day ::-webkit-scrollbar-track { background: #f1f5f9; }
 .day ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
