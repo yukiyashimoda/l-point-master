@@ -219,6 +219,12 @@ function usePointAggregation(data: AppData) {
   }, [data]);
 }
 
+/** 小数点第一位まで表示（以下切り捨て）。整数なら整数のまま表示 */
+function fmt(p: number): string {
+  const truncated = Math.floor(p * 10) / 10;
+  return Number.isInteger(truncated) ? String(truncated) : truncated.toFixed(1);
+}
+
 async function exportToPdf(element: HTMLElement, filename: string) {
   const [{ default: jsPDF }, { default: html2canvas }] = await Promise.all([
     import("jspdf"),
@@ -473,7 +479,7 @@ export default function Home() {
           bottleType === "normal"
             ? (amount / 1000) / bottlePeople
             : ((amount / 1000) * 2) / bottlePeople;
-        const rounded = Math.floor(perPerson);
+        const truncated = Math.floor(perPerson * 10) / 10;
         list.push({
           date: selectedDate,
           staffId: selectedStaffId,
@@ -482,7 +488,7 @@ export default function Home() {
             bottleType === "normal"
               ? `ボトル通常 ¥${amount.toLocaleString()} / ${bottlePeople}人`
               : `ボトル16周年特別 ¥${amount.toLocaleString()} / ${bottlePeople}人`,
-          points: rounded,
+          points: truncated,
           meta: { amount, people: bottlePeople, type: bottleType },
         });
       }
@@ -1333,7 +1339,7 @@ export default function Home() {
                           <span className="font-medium text-slate-50">{row.staff.name}</span>
                         </div>
                         <span className={`text-right text-xs font-semibold sm:text-sm ${theme === "light" ? "text-slate-900 font-bold" : "text-blue-300"}`}>
-                          {row.total} P
+                          {fmt(row.total)} P
                         </span>
                       </li>
                     );
@@ -1436,7 +1442,7 @@ export default function Home() {
                               {monthLabel}
                             </span>
                             <span className="text-[11px] font-semibold text-blue-300 sm:text-xs">
-                              合計 {total} P
+                              合計 {fmt(total)} P
                             </span>
                           </div>
                           <div className="space-y-0.5">
@@ -1447,7 +1453,7 @@ export default function Home() {
                               >
                                 <span>{CATEGORY_LABELS[cat]}</span>
                                 <span className="font-medium text-blue-200">
-                                  {monthData[cat]} P
+                                  {fmt(monthData[cat] ?? 0)} P
                                 </span>
                               </div>
                             ))}
@@ -1464,7 +1470,7 @@ export default function Home() {
                                     {r.date.replace(/-/g, "/")} | {r.label}
                                   </span>
                                   <span className="ml-2 whitespace-nowrap text-blue-300">
-                                    {r.points} P
+                                    {fmt(r.points)} P
                                   </span>
                                 </div>
                               ))}
@@ -1637,7 +1643,7 @@ export default function Home() {
                           {monthLabel}
                         </span>
                         <span className="text-[11px] font-semibold text-blue-300 sm:text-xs">
-                          合計 {total} P
+                          合計 {fmt(total)} P
                         </span>
                       </div>
                       <div className="space-y-0.5">
@@ -1648,7 +1654,7 @@ export default function Home() {
                           >
                             <span>{it.label}</span>
                             <span className="font-medium text-blue-200">
-                              {it.points} P / {it.count}件
+                              {fmt(it.points)} P / {it.count}件
                             </span>
                           </div>
                         ))}
@@ -1672,7 +1678,7 @@ export default function Home() {
                                     {r.date.replace(/-/g, "/")}　{r.label}
                                   </span>
                                   <div className="flex flex-shrink-0 items-center gap-1">
-                                    <span className="text-blue-300">{r.points} P</span>
+                                    <span className="text-blue-300">{fmt(r.points)} P</span>
                                     {isEditable && (
                                       <button
                                         type="button"
@@ -1705,7 +1711,7 @@ export default function Home() {
                                       {b.threshold}件到達ボーナス
                                     </span>
                                     <span className="text-blue-300">
-                                      +{b.points} P
+                                      +{fmt(b.points)} P
                                     </span>
                                   </li>
                                 ))}
@@ -1722,7 +1728,7 @@ export default function Home() {
                                   <li key={`${b.label}-${idx}`} className="flex justify-between">
                                     <span>{b.label}</span>
                                     <span className="text-blue-300">
-                                      +{b.points} P
+                                      +{fmt(b.points)} P
                                     </span>
                                   </li>
                                 ))}
@@ -1791,7 +1797,7 @@ export default function Home() {
                     </span>
                   </div>
                   <span className="ml-2 whitespace-nowrap text-xs font-semibold text-blue-300 sm:text-sm">
-                    {r.points} P
+                    {fmt(r.points)} P
                   </span>
                 </div>
               ))}
@@ -1799,7 +1805,7 @@ export default function Home() {
               <div className="flex items-center justify-between rounded-xl bg-slate-800/60 px-3 py-2">
                 <span className="text-xs font-medium text-slate-200 sm:text-sm">合計</span>
                 <span className="text-xs font-semibold text-slate-50 sm:text-sm">
-                  {pendingRecords.reduce((sum, r) => sum + r.points, 0)} P
+                  {fmt(pendingRecords.reduce((sum, r) => sum + r.points, 0))} P
                 </span>
               </div>
             </div>
